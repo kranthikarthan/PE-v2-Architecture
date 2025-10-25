@@ -138,7 +138,8 @@ PE-v2-Architecture/
 │   ├── 15-MONITORING-STACK-V2.md
 │   ├── 16-SECURITY-ARCHITECTURE-V2.md
 │   ├── 17-TESTING-STRATEGY-V2.md
-│   └── 18-DEPLOYMENT-ARCHITECTURE-V2.md
+│   ├── 18-DEPLOYMENT-ARCHITECTURE-V2.md
+│   └── 19-ARCHITECTURAL-PATTERNS-V2.md
 ├── database-schemas/                  # Database schema definitions
 │   ├── postgresql/                   # PostgreSQL schemas
 │   ├── cassandra/                    # Cassandra schemas

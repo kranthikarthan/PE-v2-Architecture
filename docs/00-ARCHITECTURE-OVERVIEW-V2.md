@@ -108,6 +108,14 @@ The Payments Engine v2 represents a comprehensive evolution of our payment proce
 - **Blue-Green Deployment**: Zero-downtime deployments
 - **Canary Deployment**: Gradual rollout and risk mitigation
 
+### **13. Architectural Patterns**
+- **Hexagonal Architecture**: Ports & Adapters for testability and flexibility
+- **Domain-Driven Design (DDD)**: Rich domain models and business logic
+- **CQRS**: Command Query Responsibility Segregation for performance
+- **Event Sourcing**: Immutable event history and audit trails
+- **Saga Pattern**: Distributed transaction orchestration
+- **Clean Architecture**: SOLID principles and dependency inversion
+
 ## 🏗️ **Architecture Components**
 
 ### **Channel Layer**
