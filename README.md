@@ -139,7 +139,9 @@ PE-v2-Architecture/
 │   ├── 16-SECURITY-ARCHITECTURE-V2.md
 │   ├── 17-TESTING-STRATEGY-V2.md
 │   ├── 18-DEPLOYMENT-ARCHITECTURE-V2.md
-│   └── 19-ARCHITECTURAL-PATTERNS-V2.md
+│   ├── 19-ARCHITECTURAL-PATTERNS-V2.md
+│   ├── 20-DATA-FLOW-DIAGRAM-V2.md
+│   └── 21-DATA-FLOW-VISUAL-DIAGRAMS.md
 ├── database-schemas/                  # Database schema definitions
 │   ├── postgresql/                   # PostgreSQL schemas
 │   ├── cassandra/                    # Cassandra schemas

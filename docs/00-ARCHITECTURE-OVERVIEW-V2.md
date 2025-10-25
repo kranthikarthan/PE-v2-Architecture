@@ -116,6 +116,13 @@ The Payments Engine v2 represents a comprehensive evolution of our payment proce
 - **Saga Pattern**: Distributed transaction orchestration
 - **Clean Architecture**: SOLID principles and dependency inversion
 
+### **14. Data Flow Architecture**
+- **Polyglot Persistence**: Specialized databases for different data types
+- **Cross-Database Synchronization**: Event-driven data consistency
+- **Performance Optimization**: Sub-second response times across all databases
+- **Data Volume Management**: 410GB daily, 12.3TB monthly with retention policies
+- **UETR Correlation**: End-to-end transaction tracking across all databases
+
 ## 🏗️ **Architecture Components**
 
 ### **Channel Layer**
