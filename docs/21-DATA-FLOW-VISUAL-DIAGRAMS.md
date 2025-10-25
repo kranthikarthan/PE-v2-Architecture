@@ -8,17 +8,17 @@ This document contains Mermaid diagrams showing the data flow across all databas
 
 ```mermaid
 graph TB
-    subgraph "Client Layer"
+    subgraph CL["Client Layer"]
         A[Channel/Partner] --> B[BFF Services]
     end
     
-    subgraph "Application Layer"
+    subgraph AL["Application Layer"]
         B --> C[Payment Initiation Service]
         C --> D[Validation Service]
         C --> E[UETR Service]
     end
     
-    subgraph "Database Layer"
+    subgraph DL["Database Layer"]
         F[(PostgreSQL<br/>Core Data)]
         G[(Cassandra<br/>ISO 20022 Messages)]
         H[(Redis<br/>Cache)]
@@ -26,7 +26,7 @@ graph TB
         J[(TimescaleDB<br/>Metrics)]
     end
     
-    subgraph "External Systems"
+    subgraph ES["External Systems"]
         K[Clearing Systems]
         L[Fraud API]
         M[Core Banking]
@@ -41,18 +41,23 @@ graph TB
     C --> K
     C --> M
     
-    style F fill:#e1f5fe
-    style G fill:#f3e5f5
-    style H fill:#ffebee
-    style I fill:#e8f5e8
-    style J fill:#fff3e0
+    style CL fill:#f8fafc,stroke:#e2e8f0,stroke-width:2px
+    style AL fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px
+    style DL fill:#f0fdf4,stroke:#22c55e,stroke-width:2px
+    style ES fill:#fef2f2,stroke:#ef4444,stroke-width:2px
+    
+    style F fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
+    style G fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
+    style H fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    style I fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+    style J fill:#fce7f3,stroke:#ec4899,stroke-width:2px
 ```
 
 ## 📊 **2. ISO 20022 Message Processing Flow**
 
 ```mermaid
 graph TB
-    subgraph "Message Processing"
+    subgraph MP["Message Processing"]
         A[pain.001 Input] --> B[Message Parser]
         B --> C[Schema Validator]
         C --> D[Business Validator]
@@ -60,14 +65,14 @@ graph TB
         E --> F[Message Transformer]
     end
     
-    subgraph "Database Storage"
+    subgraph DS["Database Storage"]
         G[(PostgreSQL<br/>Payment Records)]
         H[(Cassandra<br/>Message Storage)]
         I[(EventStore<br/>Event History)]
         J[(Redis<br/>Processing Cache)]
     end
     
-    subgraph "Message Types"
+    subgraph MT["Message Types"]
         K[pain.001<br/>Payment Initiation]
         L[pacs.008<br/>Credit Transfer]
         M[pacs.002<br/>Status Report]
@@ -86,10 +91,19 @@ graph TB
     H --> N
     H --> O
     
-    style G fill:#e1f5fe
-    style H fill:#f3e5f5
-    style I fill:#e8f5e8
-    style J fill:#ffebee
+    style MP fill:#f0f9ff,stroke:#0ea5e9,stroke-width:3px
+    style DS fill:#f0fdf4,stroke:#22c55e,stroke-width:3px
+    style MT fill:#fefce8,stroke:#eab308,stroke-width:3px
+    
+    style G fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
+    style H fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
+    style I fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+    style J fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    style K fill:#fce7f3,stroke:#ec4899,stroke-width:2px
+    style L fill:#fce7f3,stroke:#ec4899,stroke-width:2px
+    style M fill:#fce7f3,stroke:#ec4899,stroke-width:2px
+    style N fill:#fce7f3,stroke:#ec4899,stroke-width:2px
+    style O fill:#fce7f3,stroke:#ec4899,stroke-width:2px
 ```
 
 ## 📊 **3. UETR Correlation Flow**
