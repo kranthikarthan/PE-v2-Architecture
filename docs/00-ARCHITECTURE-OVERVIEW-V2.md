@@ -2,7 +2,7 @@
 
 ## 🚀 **Architecture v2 Vision**
 
-The Payments Engine v2 represents a comprehensive evolution of our payment processing platform, designed specifically for ISO 20022 compliance, high-volume transaction processing, and enterprise-grade reliability. This enhanced architecture combines the best of v1's operational excellence with v2's ISO 20022 compliance and performance improvements.
+The Payments Engine v2 represents a comprehensive evolution of our internal payment processing platform, designed to act as a centralized payment hub for a single banking institution. It is designed specifically for ISO 20022 compliance, high-volume transaction processing, and enterprise-grade reliability. This enhanced architecture combines the best of v1's operational excellence with v2's ISO 20022 compliance and performance improvements.
 
 ## 🎯 **Key Architectural Enhancements**
 
@@ -46,17 +46,18 @@ The Payments Engine v2 represents a comprehensive evolution of our payment proce
 - **Parallel Execution** (up to 12 agents simultaneously)
 
 ### **6. Multi-Tenant Architecture**
-- **3-Level Hierarchy**: Tenant → Business Unit → Customer
-- **Row-Level Security (RLS)** in PostgreSQL
-- **Tenant-Specific Configurations** and limits
-- **Tenant Context Propagation** across all services
-- **API Keys and User Management** per tenant
+
+The multi-tenancy model is designed to support a single banking institution's operations in multiple regions or to scale operations within a single country. It is not designed to serve multiple distinct banking institutions.
+- **Tenant Model**: A tenant can represent a specific country or region (e.g., the bank's South African branch) or a scaled instance within a single country's AKS cluster.
+- **Data Isolation**: Row-Level Security (RLS) in PostgreSQL ensures that data for each tenant is isolated.
+- **Tenant-Specific Configurations**: Each tenant can have its own specific configurations, limits, and feature flags.
+- **Tenant Context Propagation**: The tenant context is propagated across all services to ensure that all operations are performed in the correct tenant context.
 
 ### **7. Kubernetes Operators**
 - **14 Specialized Operators** for Day 2 operations
 - **PaymentOperator**: Automated payment processing
 - **TenantOperator**: Multi-tenant management
-- **ClearingOperator**: Clearing system integration
+- **ClearingOperator**: Manages the generation of clearing messages and their handover to the bank's gateway systems.
 - **AuditOperator**: Audit trail management
 - **MetricsOperator**: Metrics collection
 - **NotificationOperator**: Notification delivery
@@ -361,10 +362,11 @@ Client → Gateway → Payment Initiation Service
 ├── UETR Generation → Redis (correlation)
 ├── Validation → PostgreSQL (state)
 ├── Processing → Kafka (events)
-├── Clearing → pacs.008 → External Systems
+├── Clearing → pacs.008 → Bank's Gateway → External Systems
 ├── Status → pain.002 → Client
 └── Audit → EventStore (immutable)
 ```
+*Note: External systems are accessed via the bank's own established gateways. The Payments Engine does not connect to them directly.*
 
 ### **2. ISO 20022 Message Correlation**
 ```

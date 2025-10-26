@@ -26,7 +26,7 @@ graph TB
         J[(TimescaleDB<br/>Metrics)]
     end
     
-    subgraph ES["External Systems"]
+    subgraph BG["Bank's Gateway"]
         K[Clearing Systems]
         L[Fraud API]
         M[Core Banking]
@@ -44,7 +44,7 @@ graph TB
     style CL fill:#f8fafc,stroke:#e2e8f0,stroke-width:2px
     style AL fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px
     style DL fill:#f0fdf4,stroke:#22c55e,stroke-width:2px
-    style ES fill:#fef2f2,stroke:#ef4444,stroke-width:2px
+    style BG fill:#fef2f2,stroke:#ef4444,stroke-width:2px
     
     style F fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
     style G fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
@@ -52,6 +52,7 @@ graph TB
     style I fill:#dcfce7,stroke:#16a34a,stroke-width:2px
     style J fill:#fce7f3,stroke:#ec4899,stroke-width:2px
 ```
+*Note: The "Bank's Gateway" subgraph represents the banking institution's own infrastructure for connecting to external systems. The Payments Engine does not connect to these systems directly.*
 
 ## 📊 **2. ISO 20022 Message Processing Flow**
 

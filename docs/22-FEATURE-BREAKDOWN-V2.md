@@ -65,15 +65,14 @@ Performance Targets: 2000 TPS, 8,200 messages/second, <5s response time
 #### **0.4: Multi-Tenant Architecture (3-4 days)**
 - **AI Agent**: MultiTenantAgent
 - **Features**:
-  - 3-level tenant hierarchy
-  - Row-Level Security (RLS)
-  - Tenant-specific configurations
-  - Data isolation and partitioning
+  - Support for the bank's operations in multiple regions/countries.
+  - Scalability for a single country's operations across multiple instances.
+  - Row-Level Security (RLS) for data isolation between tenants.
+  - Tenant-specific configurations and feature flags.
 - **Deliverables**:
-  - Tenant management service
-  - RLS policies and procedures
-  - Tenant context propagation
-  - Data isolation mechanisms
+  - Tenant management service that supports regional and scaling tenants.
+  - RLS policies for strict data isolation.
+  - Tenant context propagation mechanism.
 
 #### **0.5: Event Sourcing Foundation (2-3 days)**
 - **AI Agent**: EventSourcingAgent
@@ -170,6 +169,8 @@ Performance Targets: 2000 TPS, 8,200 messages/second, <5s response time
 
 ### **Phase 2: Clearing Adapters (Parallel) - 5 Features, 5 AI Agents**
 
+*Note: Clearing adapters are responsible for generating correctly formatted messages for various payment schemes and handing them off to the bank's existing gateway infrastructure. They do not connect directly to the clearing systems.*
+
 #### **2.1: SAMOS Adapter (4-5 days)**
 - **AI Agent**: SamosAdapterAgent
 - **Features**:
@@ -178,23 +179,20 @@ Performance Targets: 2000 TPS, 8,200 messages/second, <5s response time
   - Error handling
   - Status reporting
 - **Deliverables**:
-  - SAMOS adapter service
-  - Message formatting
-  - Protocol handling
-  - Error management
+  - SAMOS adapter service for message generation.
+  - Message formatting and protocol handling.
+  - Error management and status tracking.
 
 #### **2.2: BankservAfrica Adapter (4-5 days)**
 - **AI Agent**: BankservAfricaAdapterAgent
 - **Features**:
-  - BankservAfrica integration
-  - Message transformation
+  - BankservAfrica message transformation
   - Status tracking
   - Error handling
 - **Deliverables**:
-  - BankservAfrica adapter
-  - Message processing
-  - Status management
-  - Error handling
+  - BankservAfrica adapter for message generation.
+  - Message processing and status management.
+  - Error handling procedures.
 
 #### **2.3: RTC Adapter (3-4 days)**
 - **AI Agent**: RtcAdapterAgent
@@ -204,36 +202,31 @@ Performance Targets: 2000 TPS, 8,200 messages/second, <5s response time
   - Status reporting
   - Error handling
 - **Deliverables**:
-  - RTC adapter service
-  - Protocol implementation
-  - Status tracking
-  - Error management
+  - RTC adapter service for message generation.
+  - Protocol implementation and status tracking.
+  - Error management procedures.
 
 #### **2.4: PayShap Adapter (4-5 days)**
 - **AI Agent**: PayShapAdapterAgent
 - **Features**:
-  - PayShap integration
-  - Real-time processing
+  - PayShap message formatting
+  - Real-time processing support
   - Status reporting
   - Error handling
 - **Deliverables**:
-  - PayShap adapter
-  - Real-time processing
-  - Status management
-  - Error handling
+  - PayShap adapter for real-time message generation.
+  - Status management and error handling.
 
 #### **2.5: SWIFT Adapter (5-6 days)**
 - **AI Agent**: SwiftAdapterAgent
 - **Features**:
   - SWIFT message processing
-  - International payments
+  - International payments support
   - Compliance checking
   - Status reporting
 - **Deliverables**:
-  - SWIFT adapter service
-  - Message processing
-  - Compliance checking
-  - Status management
+  - SWIFT adapter service for message generation.
+  - Compliance checking and status management.
 
 ### **Phase 3: Platform Services (Parallel) - 5 Features, 5 AI Agents**
 
